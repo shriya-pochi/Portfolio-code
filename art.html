@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            background-color: rgb(90, 85, 114);
+            font-family: 'Allura', cursive;
+            font-size: 24px;
+            color: #584b5d; /* Greyish shade of purple */
+            margin: 0;
+        }
+
+        p {
+            color: #442949cd;
+            font-fargba(49, 21, 54, 0.804)ntserrat', sans-serif;
+            margin: 20px;
+            font-size: 14px;
+            text-align: left; 
+        }
+
+        #int
+        {
+            font-size: 25px;
+        }
+
+        header {
+            background-color: #574478;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-start;
+            background-color: #4e4a5b86;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #5a546c8a;
+        }
+
+        img {
+            width: 800px;
+            max-width: 100%;
+            margin: 10px;
+        }
+
+        .text-section {
+            background-color: #7a6b94b5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My projects and work</h1>
+    </header>
+
+    <nav>
+        <a href="#art">Art</a>
+        <a href="#code">Code</a>
+    </nav>
+
+    <div class="text-section" id="art">
+        <h2>Some of my art work,</h2>
+        <img src="https://raw.githubusercontent.com/shriya-pochi/images-portfolio/main/art%20for%20port.jpeg"
+            alt="Description of the first image">
+        <img class="smaller-image"
+            src="https://raw.githubusercontent.com/shriya-pochi/images-portfolio/main/post%20for%20port.jpeg"
+            alt="Description of the second image">
+    </div>
+
+    <div class="text-section" id="code">
+        <h2>The code behind my manual invoicing script</h2>
+        <p id="int">This was a project for the Telematics company 'SenselTelematics Pvt. Ltd. I took up this project to have an
+            automatic process of converting one single excel sheet of all the invoice data into separate invoices for each
+            customer. I used python to write the code and used the pandas library to efficiently work with excel sheets.
+            The following is the code.</p>
+
+            <pre>
+        <p>
+            import pandas as pd
+import os
+import shutil
+from openpyxl import load_workbook
+from win32com import client
+
+excel= client.Dispatch("Excel.Application")
+
+def print_text_with_wrapping(text, max_line_length):
+    words = text.split()
+    lines = []
+    current_line = ""
+    for word in words:
+        if len(current_line) + len(word) <= max_line_length:
+            current_line += word + " "
+        else:
+            lines.append(current_line.strip())
+            current_line = word + " "
+    if current_line:
+        lines.append(current_line.strip())
+    wrapped_text = "\n".join(lines)
+    return wrapped_text
+
+max_line_length = 40
+
+                                                         
+                                                                                                                                                    
+##pd.set_option('display.max_columns', None)
+##pd.set_option('display.max_colwidth', 30)
+##pd.set_option('display.expand_frame_repr', False)
+
+temp= pd.read_excel("C:\\Users\\Shriya\\Downloads\\temp.xlsx")
+
+source_dict = { "CustomerName" : 1, "GSTIN" : 3,"State Code": 4, "Invoice No":11,"Invoice period":12, "Invioce Date":13, "SAC": 15 ,
+                "Qty":16 ,"Rate":17 , "Amount":18, "CGST Amt":21, "SGST Amt": 23, "IGST Amt": 25, "Tax Amt": 26, "Bill  Amt":28, "PO Number": 31,
+                "PO Date": 32,"Desc2":36}
+dest_dict = {"CustomerName" : [7,4], "GSTIN" : [13,4],"State Code": [12,4], "Invoice No": [8,9], "Invoice period":[26,3],
+             "Invioce Date":[9,9], "SAC": [22,6] ,"Qty":[22,7],"Rate":[22,8] , "Amount":[22,9], "CGST Amt":[31,9], "SGST Amt":[30,9],
+             "IGST Amt": [32,9], "Tax Amt":[33,9], "Bill  Amt":[34,9], "PO Number":[13,9],"PO Date":[14,9],"Desc2":[22,3] }
+
+for i in range(2,49):
+
+    fpath= 'C:\\Users\\Shriya\\Downloads\\msd.xlsx'
+    msd_read= pd.read_excel(fpath)
+    print("I read msd")
+
+
+    ne1= msd_read.iloc[i-2,2] #GSTIN
+    ne2= msd_read.iloc[i-2,0] #Cust Name
+    ne3= msd_read.iloc[i-2, 15] #Units
+    ne4=msd_read.iloc[i-2,3] #State Code
+    ne5= msd_read.iloc[i-2, 11] #incoice period
+    ne6= msd_read.iloc[i-2, 17] #Net amount
+
+    cv = msd_read.iloc[i-2,1]
+
+    desc= msd_read.iloc[i-2,13]
+
+    ship_add= msd_read.iloc[i-2,5]
+  
+    cv = cv.replace("\n", " ")  # Replace newline characters with spaces
+    desc = desc.replace("\n", " ")
+    ship_add = ship_add.replace("\n", " ")
+    #print("checking wrap:" , cv, desc, ship_add)
+
+    ##adress formatting
+
+    max_line_length = 40
+
+
+    x = print_text_with_wrapping(cv, max_line_length)
+
+    print_text_with_wrapping(cv, max_line_length)
+    #print("this is x: ", x)
+
+    ##end of address formatting
+
+    
+    template = 'C:\\Users\\Shriya\\Downloads\\temp.xlsx'
+    d = "C:\\Users\\Shriya\\Downloads\\"
+    q = ".xlsx"
+
+
+    destination = d + str(ne2)+ str(ne3)+ str(ne4)+ str(ne5)  + q
+
+    shutil.copyfile(template, destination)
+    print("template has been generated..")
+
+    check = pd.read_excel(destination)
+
+    if os.path.isfile(destination):
+        print(f"Destination file '{destination}' created successfully.")
+
+        fpath= 'C:\\Users\\Shriya\\Downloads\\msd.xlsx'
+        
+
+        sourcewb= load_workbook(fpath)
+        sourcesheet= sourcewb.active
+
+        dpath= destination
+        deswb= load_workbook(dpath)
+        dessheet= deswb.active
+
+        ##startrow = 2
+
+        
+        
+        for key in source_dict:
+            v= source_dict[key]
+            #print(v)
+            source_val= sourcesheet.cell(row= i, column=source_dict[key]).value
+            #print(source_val)
+            zzz=dessheet.cell( row = dest_dict[key][0], column=dest_dict[key][1], value=source_val)
+            #print(zzz)
+            
+        
+
+
+
+        deswb.save(dpath)
+
+        ##startrow +=1
+
+        print("done")
+        workbook = load_workbook(destination)
+        sheet = workbook.active
+
+        x = print_text_with_wrapping(cv, max_line_length)
+        #print(repr(x))
+        y= print_text_with_wrapping(desc, max_line_length)
+        #print(repr(y))
+        z= print_text_with_wrapping(ship_add, max_line_length)
+        #print(repr(z))
+
+
+        sheet['C8'] = x
+        sheet['C23'] = y
+        sheet['C15'] = z
+        sheet['D18']= ne4 #state code
+        sheet['D19']= ne1 #GSTIN
+        sheet['H29']= ne6 #Net amount
+        #print("Add check2")
+
+        workbook.save(destination)
+
+
+
+        sheets= excel.Workbooks.Open(destination)
+        work_sheets = sheets.Worksheets[0]
+        m = ".pdf"
+        pdf_path= d + str(ne2)+ str(ne3) + m
+
+        work_sheets.ExportAsFixedFormat(0, pdf_path)
+
+        print("pdf converted")
+
+            
+
+                
+            
+
+    else:
+        print(f"Destination file '{destination}' not found.")
+
+
+print("done")
+        </p>
+    </pre>
+    </div>
+
+
+</body>
+
+</html>

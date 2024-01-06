@@ -1,0 +1,108 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100vh;
+margin: 0;
+padding: 0;
+font-family: 'type', 'Book Antiqua', Palatino, serif;
+position: relative;
+}
+
+body::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(21, 3, 41, 0.3);
+}
+
+body::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('https://isorepublic.com/wp-content/uploads/2018/11/0457-1-1100x734.jpg');
+background-size: auto;
+background-position: center;
+background-repeat: repeat;
+z-index: -1;
+}
+
+h2 {
+font-size: 26px;
+margin-top: 10px;
+background-color: rgb(0, 65, 106, 0.0);
+color: #373449;
+text-align: left;
+font-family: 'Allura', cursive;
+}
+
+.button-container {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap; /* Allow items to wrap to the next line if there's not enough space */
+gap: 10px; /* Add some space between buttons */
+}
+
+#Resume_button {
+border-color: rgb(82, 63, 127, 0.5);
+background-color: rgb(82, 63, 127, 0.5);
+color: black;
+border-radius: 50%;
+width: 300px;
+height: 300px;
+position: absolute;
+top: 40%;
+left: 52%; /* Adjusted left position to avoid overlapping */
+transform: translate(-50%, -50%);
+font-size: 50px;
+font-family: 'Roboto Slab', serif;
+}
+
+#Art_button {
+background-color: rgb(82, 63, 127, 0.5);
+color: black;
+border-color: rgb(82, 63, 127, 0.5);
+border-radius: 50%;
+width: 400px;
+height: 400px;
+position: absolute;
+top: 40%;
+left: 80%; /* Adjusted left position to avoid overlapping */
+transform: translate(-50%, -50%);
+font-size: 50px;
+font-family: 'Roboto Slab', serif;
+}
+
+#Contact_button {
+background-color: rgb(82, 63, 127, 0.5);
+color: black;
+border-color: rgb(82, 63, 127, 0.5);
+border-radius: 50%;
+width: 200px;
+height: 200px;
+position: absolute;
+top: 80%;
+left: 65%; /* Adjusted left position to avoid overlapping */
+transform: translate(-50%, -50%);
+font-size: 50px;
+font-family: 'Roboto Slab', serif;
+}
+
+
+#additionalText {
+margin: 20px 0; /* Add margin above and below the additional text */
+margin-left: 40px; /* Adjusted left margin for additional text */
+margin-top: 0.5px;
+font-size: 15px;
+  font-size: 18px;
+  color: #000000;
+  max-width: 600px;
+  font-family: 'Allura', cursive;
+}

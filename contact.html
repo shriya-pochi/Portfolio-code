@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="contact.js" defer></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Resume</title>
+    <style>
+        body {
+            background-color: rgba(85, 81, 102, 0.838);
+            font-family: 'Montserrat', sans-serif;
+            color: rgb(36, 47, 76);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: rgb(49, 39, 56);
+        }
+
+        h2 {
+            font-size: 24px;
+            color: rgb(64, 49, 77);
+        }
+
+        p {
+            font-size: 18px;
+            color: rgb(45, 47, 71);
+        }
+
+        a {
+            color: #c1a7e4;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: rgba(33, 33, 60, 0.5); /* Semi-transparent lines */
+            margin: 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            margin-top: 5px;
+            padding: 5px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #371e4d;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #452c47;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Contact</h1>
+    <p>Looking forward to hearing from you!</p>
+
+    <hr><hr>
+
+    <h2>Email: </h2>
+    <p>shriya.pochiraju@gmail.com</p>
+
+    <h2>Phone number: </h2>
+    <p>7975551862</p>
+
+    <h2>LinkedIn: </h2>
+    <a href="https://www.linkedin.com/in/shriya-pochiraju-34474a2a6/" target="_blank">Visit my LinkedIn profile</a>
+
+    <!-- Transparent Line -->
+    <hr>
+
+    <!-- Contact Form -->
+    <h2>Here's a quick form incase you would like to reach out to me!</h2>
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="company">Company Name:</label>
+        <input type="text" id="company" name="company">
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="howDidYouHear">How did you hear about us?</label>
+        <input type="text" id="howDidYouHear" name="howDidYouHear">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="successMessage"></div>
+</body>
+
+</html>
